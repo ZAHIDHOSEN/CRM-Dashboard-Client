@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
 export default function Login() {
  
-    const handleLogin = async(e)=>{
+    const handleLogin = async(e:any)=>{
         e.preventDefault()
 
         const name = e.target.name.value;
