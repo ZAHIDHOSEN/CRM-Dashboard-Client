@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 
-
 export default function Login() {
  
     const handleLogin = async(e:any)=>{
@@ -31,6 +30,7 @@ export default function Login() {
         <button type="submit" className="w-96 h-10 bg-black text-white rounded-sm my-2">Login</button>
      </form>
      </div>
+  
    
     </div>
   )
