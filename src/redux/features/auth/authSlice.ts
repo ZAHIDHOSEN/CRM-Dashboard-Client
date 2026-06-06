@@ -36,6 +36,10 @@ export interface IUser {
   name: string;
   email: string;
   role: "ADMIN" | "LEADER" | "SETTER" | "CLOSER" | "INSTALLER" | "CLIENT";
+  organization?:string,
+  isApproved?:boolean,
+  commission_balance?:number,
+  certifications?:[string]
 }
 
 interface AuthState {
