@@ -6,6 +6,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import DashboardHome from "../components/DashboardHome";
 import ProtectedRoute from "./ProtectedRoute";
 import UsersPage from "../Pages/users/UsersPage";
+import ProposalPage from "../Pages/proposal/ProposalPage";
 
 
 
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
          { path:"users",
           element:<ProtectedRoute allowedRoles={["ADMIN"]}><UsersPage></UsersPage></ProtectedRoute>
 
+         },
+         {
+          path:"proposals",
+          element:<ProtectedRoute><ProposalPage></ProposalPage></ProtectedRoute>
          }
     ]
   },
