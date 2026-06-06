@@ -5,11 +5,14 @@ import toast from "react-hot-toast";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
 import { Eye, EyeOff, ArrowRight, Mail, Lock, Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router";
+import { useAppDispatch } from "../../app/hooks";
+import { setUser } from "../../redux/features/auth/authSlice";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [login, { isLoading, error }] = useLoginMutation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch()
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,9 +21,16 @@ export default function Login() {
     const password = (form.elements.namedItem("password") as HTMLInputElement).value;
 
     try {
-      await login({ email, password }).unwrap();
+     const result =  await login({ email, password }).unwrap();
+     const userData = result?.data?.userWithOutPassword || result?.userWithOutPassword;
+
+    if (userData) {
+      dispatch(setUser(userData));
       toast.success("Welcome back!");
       navigate("/dashboard");
+  } else {
+    toast.error("User data missing from server response");
+  }
     } catch (err: any) {
       toast.error(err?.data?.message || "Login failed");
     }
