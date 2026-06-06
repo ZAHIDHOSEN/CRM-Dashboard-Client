@@ -7,6 +7,7 @@ import DashboardHome from "../components/DashboardHome";
 import ProtectedRoute from "./ProtectedRoute";
 import UsersPage from "../Pages/users/UsersPage";
 import ProposalPage from "../Pages/proposal/ProposalPage";
+import PayrollPage from "../Pages/payroll/PayrollPage";
 
 
 
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
          {
           path:"proposals",
           element:<ProtectedRoute><ProposalPage></ProposalPage></ProtectedRoute>
+         },
+         {
+          path:"payroll",
+          element:<ProtectedRoute><PayrollPage></PayrollPage></ProtectedRoute>
          }
     ]
   },
