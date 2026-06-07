@@ -8,6 +8,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import UsersPage from "../Pages/users/UsersPage";
 import ProposalPage from "../Pages/proposal/ProposalPage";
 import PayrollPage from "../Pages/payroll/PayrollPage";
+import Training from "../Pages/training/Training";
 
 
 
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
          {
           path:"payroll",
           element:<ProtectedRoute><PayrollPage></PayrollPage></ProtectedRoute>
+         },
+         {
+          path:"training",
+          element:<ProtectedRoute allowedRoles={["ADMIN"]}><Training></Training></ProtectedRoute>
          }
     ]
   },
