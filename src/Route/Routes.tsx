@@ -10,6 +10,7 @@ import ProposalPage from "../Pages/proposal/ProposalPage";
 import PayrollPage from "../Pages/payroll/PayrollPage";
 import Training from "../Pages/training/Training";
 import Organization from "../Pages/organization/Organization";
+import TeamPage from "../Pages/team/TeamPage";
 
 
 
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
          {
           path:"organization",
           element:<ProtectedRoute allowedRoles={["ADMIN"]}><Organization></Organization></ProtectedRoute>
+         },
+         {
+          path:"teams",
+          element:<ProtectedRoute allowedRoles={["ADMIN","LEADER"]}><TeamPage></TeamPage></ProtectedRoute>
          }
     ]
   },
