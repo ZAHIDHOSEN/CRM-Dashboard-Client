@@ -13,7 +13,7 @@ const allLinks = [
   { to: "/dashboard/training",     label: "Training",     icon: BookOpen,        roles: ["ADMIN","LEADER","SETTER","CLOSER","INSTALLER"] },
   { to: "/dashboard/organization", label: "Organization", icon: Building2,       roles: ["ADMIN"] },
   { to: "/dashboard/teams",        label: "Teams",        icon: UsersRound,      roles: ["ADMIN","LEADER"] },
-  { to: "/dashboard/audit-logs",   label: "Audit Logs",   icon: ClipboardList,   roles: ["ADMIN"] },
+  { to: "/dashboard/audit-log",   label: "Audit Logs",   icon: ClipboardList,   roles: ["ADMIN"] },
 ];
 
 const roleBadgeColor: Record<string, string> = {

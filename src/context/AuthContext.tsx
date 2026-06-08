@@ -20,11 +20,11 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const dispatch = useAppDispatch();
-  const { user, isAuthenticated } = useAppSelector((state) => state.auth);
+  const { user, isAuthenticated,isLoading } = useAppSelector((state) => state.auth);
   const [logoutApi] = useLogoutMutation();
 
   // RTK Query handles fetching
-  const { data, isLoading, isSuccess, isError } = useGetMeQuery(undefined);
+  const { data, isSuccess, isError, } = useGetMeQuery(undefined);
 
   // Replaces the broken component-level onQueryStarted
   useEffect(() => {

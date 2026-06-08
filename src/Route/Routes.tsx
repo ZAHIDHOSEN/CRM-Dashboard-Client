@@ -11,6 +11,7 @@ import PayrollPage from "../Pages/payroll/PayrollPage";
 import Training from "../Pages/training/Training";
 import Organization from "../Pages/organization/Organization";
 import TeamPage from "../Pages/team/TeamPage";
+import AuditLogPage from "../Pages/auditLog/AuditLogPage";
 
 
 
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
          {
           path:"teams",
           element:<ProtectedRoute allowedRoles={["ADMIN","LEADER"]}><TeamPage></TeamPage></ProtectedRoute>
+         },
+         {
+          path:"audit-log",
+          element:<ProtectedRoute allowedRoles={["ADMIN"]}><AuditLogPage></AuditLogPage></ProtectedRoute>
          }
     ]
   },
