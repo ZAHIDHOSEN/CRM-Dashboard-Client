@@ -12,6 +12,7 @@ import Training from "../Pages/training/Training";
 import Organization from "../Pages/organization/Organization";
 import TeamPage from "../Pages/team/TeamPage";
 import AuditLogPage from "../Pages/auditLog/AuditLogPage";
+import LeadsPage from "../Pages/leads/LeadsPage";
 
 
 
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
          {
           path:"audit-log",
           element:<ProtectedRoute allowedRoles={["ADMIN"]}><AuditLogPage></AuditLogPage></ProtectedRoute>
+         },
+         {
+          path:"leads",
+          element:<ProtectedRoute allowedRoles={["ADMIN","LEADER"]}><LeadsPage></LeadsPage></ProtectedRoute>
          }
     ]
   },
