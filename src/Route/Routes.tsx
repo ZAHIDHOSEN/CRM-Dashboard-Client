@@ -9,6 +9,7 @@ import UsersPage from "../Pages/users/UsersPage";
 import ProposalPage from "../Pages/proposal/ProposalPage";
 import PayrollPage from "../Pages/payroll/PayrollPage";
 import Training from "../Pages/training/Training";
+import Organization from "../Pages/organization/Organization";
 
 
 
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
          {
           path:"training",
           element:<ProtectedRoute allowedRoles={["ADMIN"]}><Training></Training></ProtectedRoute>
+         },
+         {
+          path:"organization",
+          element:<ProtectedRoute allowedRoles={["ADMIN"]}><Organization></Organization></ProtectedRoute>
          }
     ]
   },
