@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router";
-import Layout from "../layout/Layout";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import DashboardLayout from "../layout/DashboardLayout";
@@ -13,13 +12,14 @@ import Organization from "../Pages/organization/Organization";
 import TeamPage from "../Pages/team/TeamPage";
 import AuditLogPage from "../Pages/auditLog/AuditLogPage";
 import LeadsPage from "../Pages/leads/LeadsPage";
+import MyProposalsPage from "../Pages/proposal/MyProposalsPage";
 
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout></Layout>,
+    element: <Login></Login>
 
   },
   {
@@ -72,6 +72,10 @@ export const router = createBrowserRouter([
          {
           path:"leads",
           element:<ProtectedRoute allowedRoles={["ADMIN","LEADER"]}><LeadsPage></LeadsPage></ProtectedRoute>
+         },
+         {
+          path:"myProposals",
+          element:<ProtectedRoute allowedRoles={["CLIENT"]}><MyProposalsPage></MyProposalsPage></ProtectedRoute>
          }
     ]
   },
