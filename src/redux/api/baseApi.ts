@@ -5,7 +5,6 @@ export const baseApi = createApi({
 
   baseQuery: fetchBaseQuery({
     baseUrl: "https://crm-dashboard-server.vercel.app/api/v1",
-
     credentials: "include", 
 
   }),
