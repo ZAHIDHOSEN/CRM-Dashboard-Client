@@ -16,7 +16,7 @@ export default function Register() {
   useEffect(() => {
     const fetchOrganizations = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/v1/organization");
+        const res = await fetch("https://crm-dashboard-server.vercel.app/api/v1/organization");
         if (!res.ok) throw new Error('Failed to fetch orgs');
         const data = await res.json();
         setOrganizations(data.data || []);
