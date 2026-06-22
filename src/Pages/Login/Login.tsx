@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -7,6 +8,16 @@ import { Eye, EyeOff, ArrowRight, Mail, Lock, Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import { useAppDispatch } from "../../app/hooks";
 import { setUser } from "../../redux/features/auth/authSlice";
+
+const demoRoles = [
+  { label: "Admin", email: "rina@gmail.com", password:"Password123" },
+  { label: "Leader", email: "sabbir@123gmail.com", password:"123456" },
+  { label: "Closer", email: "zahidhosen203@gmail.com", password:"123456" },
+  { label: "Setter", email: "pranto@gmail.com", password:"123456" },
+  { label: "Installer", email: "tomas@gmail.com", password:"123456" },
+  { label: "Client", email: "dipto@gmail.com", password:"123456" },
+];
+
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,6 +46,25 @@ export default function Login() {
       toast.error(err?.data?.message || "Login failed");
     }
   };
+
+
+
+  const handleDemoLogin = async (email: string, password: string) => {
+  try {
+    const result = await login({ email, password }).unwrap();
+    const userData = result?.data?.userWithOutPassword || result?.userWithOutPassword;
+
+    if (userData) {
+      dispatch(setUser(userData));
+      toast.success(`Logged in as ${email}`);
+      navigate("/dashboard");
+    } else {
+      toast.error("User data missing from server response");
+    }
+  } catch (err: any) {
+    toast.error(err?.data?.message || "Demo login failed");
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
@@ -147,8 +177,27 @@ export default function Login() {
               )}
             </button>
           </form>
-
-          <div className="flex items-center gap-3 my-5">
+          {/* button for recruiter */}
+       <div className="mt-1">
+        <p className="text-center text-xs text-slate-400 mb-2.5">
+          Recruiter access — try any role
+        </p>
+        <div className="grid grid-cols-3 gap-2">
+         {demoRoles.map((r) => (
+        <button
+        key={r.label}
+        type="button"
+        onClick={() => handleDemoLogin(r.email, r.password)}
+        disabled={isLoading}
+        className="text-xs px-2 py-1.5 border border-slate-200 rounded-lg text-slate-600 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-colors disabled:opacity-60"
+      >
+        {r.label}
+      </button>
+     ))}
+    </div>
+  </div>
+  {/* last part */}
+         <div className="flex items-center gap-3 my-5">
             <div className="flex-1 h-px bg-slate-100" />
             <span className="text-xs text-slate-400">or</span>
             <div className="flex-1 h-px bg-slate-100" />
